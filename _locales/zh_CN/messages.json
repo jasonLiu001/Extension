@@ -1,0 +1,236 @@
+{
+    "extension_title": {
+        "message": "自动化",
+        "description": "Extension Name"
+    },
+    "extension_description": {
+        "message": "任务自动化"
+    },
+    "options_title": {
+        "message": "参数设置"
+    },
+    "options_setting_title": {
+        "message": "工具参数设置"
+    },
+    "options_basic_setting": {
+        "message": "基本信息设置"
+    },
+    "options_Regulation": {
+        "message": "杀号规则"
+    },
+    "options_filterCounts": {
+        "message": "过滤次数(推荐选择值:[2])"
+    },
+    "options_oneTime_filter": {
+        "message": "一次过滤规则"
+    },
+    "options_secondTime_filter": {
+        "message": "二次过滤规则"
+    },
+    "options_save_button": {
+        "message": "保存"
+    },
+    "options_close_button": {
+        "message": "关闭"
+    },
+    "options_reset_button": {
+        "message": "重置"
+    },
+    "options_lbl_start_time": {
+        "message": "执行时间"
+    },
+    "options_lbl_start_time_required": {
+        "message": "开始时间值不能为空！输入0表示不判断"
+    },
+    "options_lbl_start_time_minlength": {
+        "message": "输入长度最小是 1 个字符，输入0表示不判断"
+    },
+    "options_lbl_target_profit": {
+        "message": "目标利润"
+    },
+    "options_lbl_target_profit_required": {
+        "message": "目标利润值不能为空！输入0表示不判断"
+    },
+    "options_lbl_target_profit_number": {
+        "message": "必须输入合法的数字"
+    },
+    "options_lbl_target_profit_min": {
+        "message": "输入值不能小于 0，输入0表示不判断"
+    },
+    "options_lbl_prize": {
+        "message": "奖金额度"
+    },
+    "options_lbl_prize_required": {
+        "message": "奖金额度值不能为空！默认输入最小值1900"
+    },
+    "options_lbl_prize_number": {
+        "message": "必须输入合法的数字"
+    },
+    "options_lbl_prize_min": {
+        "message": "输入值不能小于1900，最小值为1900"
+    },
+    "options_lbl_prize_mode": {
+        "message": "模式"
+    },
+    "options_lbl_prize_mode_required": {
+        "message": "投注模式不能为空！"
+    },
+    "options_lbl_prize_mode_maxlength": {
+        "message": "输入长度最多1个字符，取值：f(分模式)|j(角模式)|y(元模式)"
+    },
+    "options_lbl_current_money": {
+        "message": "当前账户总余额"
+    },
+    "options_lbl_current_money_required": {
+        "message": "当前账户余额值不能为空！"
+    },
+    "options_lbl_current_money_min": {
+        "message": "输入值不能小于1，最小值为1，该值只有在目标利润为百分比时才起作用！"
+    },
+    "options_lbl_lose_money": {
+        "message": "止损金额"
+    },
+    "options_lbl_lose_money_required": {
+        "message": "止损金额值不能为空！输入0表示不判断"
+    },
+    "options_lbl_lose_money_number": {
+        "message": "必须输入合法的数字"
+    },
+    "options_lbl_lose_money_min": {
+        "message": "输入值不能小于 0，输入0表示不判断"
+    },
+    "options_lbl_double_counts": {
+        "message": "投注倍数"
+    },
+    "options_lbl_double_counts_required": {
+        "message": "投注倍数值不能为空！"
+    },
+    "options_lbl_double_counts_number": {
+        "message": "必须输入合法的数字！"
+    },
+    "options_lbl_double_counts_min": {
+        "message": "输入值不能小于 1，最小值默认为1"
+    },
+    "options_lbl_maxProfitTimes": {
+        "message": "峰值次数"
+    },
+    "options_lbl_maxProfitTimes_info": {
+        "message": "【优先级高于目标利润，目的是为了达到理想盈利值】"
+    },
+    "options_lbl_maxLoseTimes": {
+        "message": "亏损次数"
+    },
+    "options_lbl_sequenceCounts": {
+        "message": "亏损间隔投注期数"
+    },
+    "options_user_information": {
+        "message": "下面的参数根据实际情况设置，默认值可都设置为0"
+    },
+    "options_success_message": {
+        "message": "保存成功！你需要重启浏览器已便使用最新的设置！"
+    },
+    "options_lbl_twoNumCombination": {
+        "message": "杀任意2码"
+    },
+    "options_lbl_sum_value": {
+        "message": "杀和值"
+    },
+    "options_lbl_road012": {
+        "message": "杀012路"
+    },
+    "options_lbl_odd_even": {
+        "message": "杀奇偶"
+    },
+    "options_lbl_number908": {
+        "message": "908注大底"
+    },
+    "options_lbl_killTwoNumberSumTail": {
+        "message": "杀两码合"
+    },
+    "options_lbl_killSumNumber": {
+        "message": "杀合"
+    },
+    "options_lbl_killStrideNumber": {
+        "message": "杀跨"
+    },
+    "options_lbl_killLastPositionNumbers": {
+        "message": "杀个"
+    },
+    "options_lbl_killFirstPositionNumbers": {
+        "message": "杀百"
+    },
+    "options_lbl_killMidPositionNumbers": {
+        "message": "杀十"
+    },
+    "options_lbl_houTwoBraveNumbers": {
+        "message": "定后二胆"
+    },
+    "options_lbl_brokenGroup124": {
+        "message": "杀断组1-2-4"
+    },
+    "options_lbl_brokenGroup233": {
+        "message": "杀断组2-3-3"
+    },
+    "options_lbl_brokenGroup223": {
+        "message": "杀断组2-2-3"
+    },
+    "options_lbl_braveNumbers": {
+        "message": "定后三胆"
+    },
+    "options_lbl_braveNumberContains23": {
+        "message": "9胆=23"
+    },
+    "options_lbl_braveMethod01": {
+        "message": "定后三4胆"
+    },
+    "options_lbl_braveMethod02": {
+        "message": "定后三5胆"
+    },
+    "options_lbl_number784": {
+        "message": "784注大底"
+    },
+    "options_lbl_isOpposite": {
+        "message": "号码取反"
+    },
+    "options_lbl_catchUp": {
+        "message": "2连错后取反投"
+    },
+    "options_lbl_oneTime_filter_01": {
+        "message": "中跟+滤错中错+滤中错中"
+    },
+    "options_lbl_oneTime_filter_02": {
+        "message": "中跟+滤错中错+滤中错中(如果当前是一次过滤，有倍投功能)"
+    },
+    "options_lbl_oneTime_filter_03": {
+        "message": "[无过滤作用]由原始过滤结果，进行1倍平投+连错不投"
+    },
+    "options_lbl_oneTime_filter_04": {
+        "message": "[无过滤作用]由原始过滤结果，进行1,2倍投+2连错以上不投"
+    },
+    "options_lbl_secondTime_filter_01": {
+        "message": "中跟+滤错中错+滤中错中"
+    },
+    "options_lbl_secondTime_filter_02": {
+        "message": "中跟+滤错中错+滤中错中(如果当前是二次过滤，有倍投功能)"
+    },
+    "options_lbl_secondTime_filter_03": {
+        "message": "[无过滤作用]由一次过滤结果，进行1倍平投+连错不投"
+    },
+    "options_lbl_secondTime_filter_04": {
+        "message": "[无过滤作用]由一次过滤结果，进行1,2倍投+2连错以上不投"
+    },
+    "options_lbl_after_wrong": {
+        "message": "错后才产生投注号码"
+    },
+    "popup_start_button": {
+        "message": "开始"
+    },
+    "popup_stop_button": {
+        "message": "停止"
+    },
+    "popup_test_button": {
+        "message": "测试"
+    },
+    "alert_info_message": {
+        "message": "不能同时选择【号码取反】和【2连错后取反投】"
+    }}

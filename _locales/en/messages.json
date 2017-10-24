@@ -1,0 +1,237 @@
+{
+    "extension_title": {
+        "message": "Auto Login",
+        "description": "Extension Name"
+    },
+    "extension_description": {
+        "message": "An extension to play game automatic."
+    },
+    "options_title": {
+        "message": "Options"
+    },
+    "options_setting_title": {
+        "message": "Automation Options"
+    },
+    "options_basic_setting": {
+        "message": "Basic Setting"
+    },
+    "options_Regulation": {
+        "message": "Regulation"
+    },
+    "options_filterCounts": {
+        "message": "filterCounts"
+    },
+    "options_oneTime_filter": {
+        "message": "OneTime Filter Regulation"
+    },
+    "options_secondTime_filter": {
+        "message": "Second Time Filter Regulation"
+    },
+    "options_save_button": {
+        "message": "Save"
+    },
+    "options_close_button": {
+        "message": "Close"
+    },
+    "options_reset_button": {
+        "message": "Reset"
+    },
+    "options_lbl_start_time": {
+        "message": "Start Time"
+    },
+    "options_lbl_start_time_required": {
+        "message": "The Value must not be null."
+    },
+    "options_lbl_start_time_minlength": {
+        "message": "The string length must be 1 at least.Default value is 0."
+    },
+    "options_lbl_target_profit": {
+        "message": "Target Profit"
+    },
+    "options_lbl_target_profit_required": {
+        "message": "The Value must not be null."
+    },
+    "options_lbl_target_profit_number": {
+        "message": "The Value must be a number."
+    },
+    "options_lbl_target_profit_min": {
+        "message": "The min value must be bigger than 0 or 0."
+    },
+    "options_lbl_prize": {
+        "message": "Prize"
+    },
+    "options_lbl_prize_required": {
+        "message": "The Value must not be null."
+    },
+    "options_lbl_prize_number": {
+        "message": "The Value must be a number."
+    },
+    "options_lbl_prize_min": {
+        "message": "The min value must be bigger than 1900 or 1900."
+    },
+    "options_lbl_prize_mode": {
+        "message": "Prize Mode"
+    },
+    "options_lbl_prize_mode_required": {
+        "message": "The Value must not be null."
+    },
+    "options_lbl_prize_mode_maxlength": {
+        "message": "The max value string length must be only 1."
+    },
+    "options_lbl_current_money": {
+        "message": "current money"
+    },
+    "options_lbl_current_money_required": {
+        "message": "The Value must not be null."
+    },
+    "options_lbl_current_money_min": {
+        "message": "The min value must be bigger than 1 or 1."
+    },
+    "options_lbl_lose_money": {
+        "message": "lost money"
+    },
+    "options_lbl_lose_money_required": {
+        "message": "The Value must not be null."
+    },
+    "options_lbl_lose_money_number": {
+        "message": "The Value must be a number."
+    },
+    "options_lbl_lose_money_min": {
+        "message": "The min value must be bigger than 0 or 0."
+    },
+    "options_lbl_double_counts": {
+        "message": "Double Counts"
+    },
+    "options_lbl_double_counts_required": {
+        "message": "The Value must not be null."
+    },
+    "options_lbl_double_counts_number": {
+        "message": "The Value must be a number."
+    },
+    "options_lbl_double_counts_min": {
+        "message": "The min value must be bigger than 1 or 1."
+    },
+    "options_lbl_maxProfitTimes": {
+        "message": "Max Profit Times"
+    },
+    "options_lbl_maxProfitTimes_info": {
+        "message": "Max Profit info"
+    },
+    "options_lbl_maxLoseTimes": {
+        "message": "Max Lost Times"
+    },
+    "options_lbl_sequenceCounts": {
+        "message": "Max Sequence Counts"
+    },
+    "options_user_information": {
+        "message": "Use information"
+    },
+    "options_success_message": {
+        "message": "Options saved! You should restart the chrome that can use the current settings options."
+    },
+    "options_lbl_twoNumCombination": {
+        "message": "twoNumCombination"
+    },
+    "options_lbl_sum_value": {
+        "message": "sum_value"
+    },
+    "options_lbl_road012": {
+        "message": "road012"
+    },
+    "options_lbl_odd_even": {
+        "message": "odd_even"
+    },
+    "options_lbl_number908": {
+        "message": "number908"
+    },
+    "options_lbl_killTwoNumberSumTail": {
+        "message": "killTwoNumberSumTail"
+    },
+    "options_lbl_killSumNumber": {
+        "message": "killSumNumber"
+    },
+    "options_lbl_killStrideNumber": {
+        "message": "killStrideNumber"
+    },
+    "options_lbl_killLastPositionNumbers": {
+        "message": "killLastPositionNumbers"
+    },
+    "options_lbl_killFirstPositionNumbers": {
+        "message": "killFirstPositionNumbers"
+    },
+    "options_lbl_killMidPositionNumbers": {
+        "message": "killMidPositionNumbers"
+    },
+    "options_lbl_houTwoBraveNumbers": {
+        "message": "houTwoBraveNumbers"
+    },
+    "options_lbl_brokenGroup124": {
+        "message": "brokenGroup124"
+    },
+    "options_lbl_brokenGroup233": {
+        "message": "brokenGroup233"
+    },
+    "options_lbl_brokenGroup223": {
+        "message": "brokenGroup223"
+    },
+    "options_lbl_braveNumbers": {
+        "message": "braveNumbers"
+    },
+    "options_lbl_braveNumberContains23": {
+        "message": "braveNumberContains23"
+    },
+    "options_lbl_braveMethod01": {
+        "message": "braveMethod01"
+    },
+    "options_lbl_braveMethod02": {
+        "message": "braveMethod02"
+    },
+    "options_lbl_number784": {
+        "message": "number784"
+    },
+    "options_lbl_isOpposite": {
+        "message": "isOpposite"
+    },
+    "options_lbl_catchUp": {
+        "message": "catchUp"
+    },
+    "options_lbl_oneTime_filter_01": {
+        "message": "options_lbl_oneTime_filter_01"
+    },
+    "options_lbl_oneTime_filter_02": {
+        "message": "options_lbl_oneTime_filter_02"
+    },
+    "options_lbl_oneTime_filter_03": {
+        "message": "options_lbl_oneTime_filter_03"
+    },
+    "options_lbl_oneTime_filter_04": {
+        "message": "options_lbl_oneTime_filter_04"
+    },
+    "options_lbl_secondTime_filter_01": {
+        "message": "options_lbl_secondTime_filter_01"
+    },
+    "options_lbl_secondTime_filter_02": {
+        "message": "options_lbl_secondTime_filter_02"
+    },
+    "options_lbl_secondTime_filter_03": {
+        "message": "options_lbl_secondTime_filter_03"
+    },
+    "options_lbl_secondTime_filter_04": {
+        "message": "options_lbl_secondTime_filter_04"
+    },
+    "options_lbl_after_wrong": {
+        "message": "invest number after wrong."
+    },
+    "popup_start_button": {
+        "message": "Start"
+    },
+    "popup_stop_button": {
+        "message": "Stop"
+    },
+    "popup_test_button": {
+        "message": "Test"
+    },
+    "alert_info_message": {
+        "message": "Do not select the same time."
+    }
+}

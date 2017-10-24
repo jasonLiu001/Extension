@@ -1,0 +1,72 @@
+
+
+Bug列表:
+    1.杀断组的时候，会多出一个000，如断组的号码为'9-45-2173'，其他工具排除后为926注，自己代码的结果却为926注，多出了一个000这一注(已修复)
+    2.时间到0点时，默认是第二天，monent出来的时间不对（已修复）
+    3.开始生成历史中奖结果时，逻辑错误！(已修复)
+    4.调用 chrome.storage.sync.set方法报错！(已解决)，测试方法可以不用管，但是实际投注时，需要处理这个问题，
+       可以和以前一样还是报错在变量中来存储。(已修复)
+    5.注意：参数设置中，保存的参数不能使用，还是使用的全局变量来实现的！(已修复)
+    6.总利润的计算是否正确（已修复）
+    7.每次投注前的清屏操作（已添加）
+    8.background中的变量作用域和content-script中的全局变量的生命周期不一样，background中的对象是存在于后台进程的，即使刷新页面也不会被重置，
+    除非重新打开浏览器，而content-script会随着页面的刷新，全局变量会自动被恢复到初始状态的。（之前放在content-script中的变量暂时先不考虑修改）
+    9.开始和停止的状态，也应该是在content-script中，因为页面刷新时，content-script中的内容会自动停止(已修复，放到background中处理)
+
+
+测试时间选择：(测试时一定要向前多选10期来模拟实际投注)
+   例1:  2015年03月1日 01:09:00 到 2015年03月2日 02:00:00
+   说明：测试全天120期盈利情况
+
+   例2:  2015年03月1日 22:09:00 到 2015年03月2日 02:00:00
+   说明：测试当天晚11点以后盈利情况
+
+   例3： 2015年03月1日 20:31:00 到 2015年03月2日 02:00:00
+   说明：测试当天晚10点以后盈利情况
+
+替换console.log的正则/?/?console.log.*?;
+
+提高测试效率的方法
+步骤一.添加如下内容到test_program.js中并注释掉期号部分：
+
+if (business.Variables.firstTimeFlag) {
+    console.log('');
+    console.log('');
+  } else {
+    console.log('历史盈利峰值：【' + business.Variables.maxWinProfit + '】 历史亏损峰值：【' + business.Variables.maxLoseProfit + '】');
+    console.log('当前账户余额:【' + business.Variables.winProfit + '】');
+ }
+
+
+console.log('上期投注注数：【' + business.Variables.lastInvestNumberArray.length + '】');
+console.log('未过滤前，原始中奖结果【' + business.Variables.historyWinsArray.toString() + '】');
+console.log('第【1】次过滤已完成，过滤结果【' + business.Variables.firstFilterHistoryArray.toString() + '】');
+console.log('第【2】次过滤已完成，二次过滤结果【' + business.Variables.secondFilterHistoryArray.toString() + '】');
+console.log('上期:' + lotteryData.row[0].expect + '期，开奖号为：' + lotteryData.row[0].opencode);
+console.log('历史盈利峰值：【' + business.Variables.maxWinProfit + '】 历史亏损峰值：【' + business.Variables.maxLoseProfit + '】');
+console.log('当前账户余额:【' + business.Variables.winProfit + '】');
+
+步骤二：替换以下文件中的console.log输出：
+
+investMethods.js
+threeNum-betting.js
+hele888.js
+
+【可选添加】步骤三：investMethods.js中添加输出检查：
+
+在var automationInvest = new hele888()代码后添加如下输出信息:
+console.log('第【' + business.Variables.investCounter + '】次投入倍数【' + business.ApplicationParams.double_counts + '】,兑奖后余额【' + business.Variables.winProfit + '】');
+console.log('');
+
+在automationInvest.startThreeInvestNumber方法中的 business.Variables.winProfit = business.Variables.winProfit + (-moneyInject)后添加如下代码：
+
+console.log('第【' + business.Variables.investCounter + '】次 投入【' + moneyInject + '】,  倍数【' + business.ApplicationParams.double_counts + '】，余额【' + business.Variables.winProfit + '】');
+
+步骤四：bussiness.js中添加输出检查:
+在business.winProfitCalc方法中realInvestHistoryWinsArray[realInvestHistoryWinsArray.length - 1] == '中'后添加
+console.log('第【'+business.Variables.investCounter+'】次 中奖结果【中】');
+在else 后面添加：
+console.log('第【'+business.Variables.investCounter+'】次 中奖结果【错】');
+
+步骤五：注释investMethods.js中的console.clear()
+

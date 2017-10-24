@@ -1,0 +1,496 @@
+    /**
+     *
+     * 在指定的规则错后才 产生三星投注的最终号码
+     * @param {Object} lotteryData 奖号实体
+     * @param {Number} index 奖号索引值 0: 最新一期的奖号 1:上一期,以此类推
+     * @param {Function} callback 回调函数
+     * */
+    function generateInvestNumbersAfterWrong(lotteryData, index, callback) {
+        //利润计算
+        var bonus = new lotteryBonus();
+        //上期后三的开奖号码
+        var lastThreeOpenCode = util.getOpenCodeByType('three', lotteryData.row[0].opencode);
+        //1000注号码
+        util.getNumStringByNumber('0987654321', function (err, initTotal) {
+
+
+
+            //杀012路
+            var road0_1_2 = new road012();
+            //真正投注的时候需要将类型转换为caileilei,这里为了测试先使用500wan类型
+            var array012 = road0_1_2.getRoad012NumberArray(lotteryData, index);
+            var last_array012 = road0_1_2.getRoad012NumberArray(lotteryData, index + 1);
+            var road012String = road0_1_2.getRoad012String(lotteryData, index);
+            if (!business.killNumberRegulation.road012) {
+                array012 = null;
+                last_array012 = null;
+            } else {
+
+            }
+
+            road0_1_2.remove012(initTotal, last_array012, function (err, last_result012) {
+                road0_1_2.remove012(initTotal, array012, function (err, result012) {
+                    if (business.killNumberRegulation.road012) {
+
+
+
+
+                    }
+
+                    var rest_result012;//当期过滤012后，需要投注的号码
+                    //如果上期未中则产生本期号码进行投注
+                    if (!bonus.isWin(last_result012, lastThreeOpenCode)) {
+                        rest_result012 = result012;
+                    } else {
+                        rest_result012 = initTotal;
+                    }
+
+                    //杀二码合
+                    var combination = new twoNumCombination();
+                    var numCombinationString = combination.getTwoNumCombination(lotteryData, index);
+                    var twoNumCombinationArray = combination.getTwoNumCombinationArray(lotteryData, index);
+                    var last_twoNumCombinationArray = combination.getTwoNumCombinationArray(lotteryData, index + 1);
+                    if (!business.killNumberRegulation.twoNumCombination) {
+                        twoNumCombinationArray = null;
+                        last_twoNumCombinationArray = null;
+                    } else {
+
+                    }
+
+                    combination.removedNumCombination(rest_result012, last_twoNumCombinationArray, function (err, last_resultCombination) {
+                        combination.removedNumCombination(rest_result012, twoNumCombinationArray, function (err, resultCombination) {
+                            if (business.killNumberRegulation.twoNumCombination) {
+
+
+
+
+                            }
+
+                            var rest_resultCombination;
+                            //如果上期未中则产生本期号码进行投注
+                            if (!bonus.isWin(last_resultCombination, lastThreeOpenCode)) {
+                                rest_resultCombination = resultCombination;
+                            } else {
+                                rest_resultCombination = rest_result012;
+                            }
+
+                            //杀奇偶
+                            var oddEven = new oddAndEven();
+                            var oddEvenString = oddEven.getOddAndEven(lotteryData, index);
+                            var last_oddEvenString = oddEven.getOddAndEven(lotteryData, index + 1);
+                            if (!business.killNumberRegulation.odd_even) {
+                                oddEvenString = null;
+                                last_oddEvenString = null;
+                            } else {
+
+                            }
+
+                            oddEven.removedOddAndEven(rest_resultCombination, last_oddEvenString, function (err, last_resultOddEven) {
+                                oddEven.removedOddAndEven(rest_resultCombination, oddEvenString, function (err, resultOddEven) {
+                                    if (business.killNumberRegulation.odd_even) {
+
+
+
+                                    }
+
+                                    var rest_resultOddEven;
+                                    //如果上期未中则产生本期号码进行投注
+                                    if (!bonus.isWin(last_resultOddEven, lastThreeOpenCode)) {
+                                        rest_resultOddEven = resultOddEven;
+                                    } else {
+                                        rest_resultOddEven = rest_resultCombination;
+                                    }
+
+                                    var braveNumbersObj = new braveNumbers();
+                                    var needKillBraveNumbers = braveNumbersObj.getBraveNumbersArray(lotteryData, index);
+                                    var last_needKillBraveNumbers = braveNumbersObj.getBraveNumbersArray(lotteryData, index + 1);
+                                    var braveNumbersString = braveNumbersObj.getBraveNumbersString(lotteryData, index);
+                                    if (!business.killNumberRegulation.braveNumbers) {
+                                        needKillBraveNumbers = null;
+                                        last_needKillBraveNumbers = null;
+                                    } else {
+
+                                    }
+
+                                    braveNumbersObj.removedBraveNumbers(rest_resultOddEven, last_needKillBraveNumbers, function (err, last_resultBraveNumbers) {
+                                        braveNumbersObj.removedBraveNumbers(rest_resultOddEven, needKillBraveNumbers, function (err, resultBraveNumbers) {
+                                            if (business.killNumberRegulation.braveNumbers) {
+
+
+
+                                            }
+
+                                            var rest_resultBraveNumbers;
+                                            //如果上期未中则产生本期号码进行投注
+                                            if (!bonus.isWin(last_resultBraveNumbers, lastThreeOpenCode)) {
+                                                rest_resultBraveNumbers = resultBraveNumbers;
+                                            } else {
+                                                rest_resultBraveNumbers = rest_resultOddEven;
+                                            }
+
+                                            var braveNumberContains23Obj = new braveNumberContains23();
+                                            var needBraveNumberContains23 = braveNumberContains23Obj.getBraveNumberContains23Array(lotteryData, index);
+                                            var last_needBraveNumberContains23 = braveNumberContains23Obj.getBraveNumberContains23Array(lotteryData, index + 1);
+                                            var removedBraveNumberContains23 = braveNumberContains23Obj.getBraveNumberContains23String(lotteryData, index);
+                                            if (!business.killNumberRegulation.braveNumberContains23) {
+                                                needBraveNumberContains23 = null;
+                                                last_needBraveNumberContains23 = null;
+                                            } else {
+
+                                            }
+
+                                            braveNumberContains23Obj.removedBraveNumberContains23(rest_resultBraveNumbers, last_needBraveNumberContains23, function (err, last_resultBraveNumberContains23) {
+                                                braveNumberContains23Obj.removedBraveNumberContains23(rest_resultBraveNumbers, needBraveNumberContains23, function (err, resultBraveNumberContains23) {
+                                                    if (business.killNumberRegulation.braveNumberContains23) {
+
+
+
+
+                                                    }
+
+                                                    var rest_resultBraveNumberContains23;
+                                                    //如果上期未中则产生本期号码进行投注
+                                                    if (!bonus.isWin(last_resultBraveNumberContains23, lastThreeOpenCode)) {
+                                                        rest_resultBraveNumberContains23 = resultBraveNumberContains23;
+                                                    } else {
+                                                        rest_resultBraveNumberContains23 = rest_resultBraveNumbers;
+                                                    }
+
+                                                    var killTwoNumberSumTailObj = new killTwoNumberSumTail();
+                                                    var needKillTwoNumberSumTail = killTwoNumberSumTailObj.getKillTwoNumberSumTailArray(lotteryData, index);
+                                                    var last_needKillTwoNumberSumTail = killTwoNumberSumTailObj.getKillTwoNumberSumTailArray(lotteryData, index + 1);
+                                                    var removedKillTwoNumberSumTail = killTwoNumberSumTailObj.getKillTwoNumberSumTailString(lotteryData, index);
+                                                    if (!business.killNumberRegulation.killTwoNumberSumTail) {
+                                                        needKillTwoNumberSumTail = null;
+                                                        last_needKillTwoNumberSumTail = null;
+                                                    } else {
+
+                                                    }
+
+                                                    killTwoNumberSumTailObj.removedKillTwoNumberSumTail(rest_resultBraveNumberContains23, last_needKillTwoNumberSumTail, function (err, last_resultKillTwoNumberSumTail) {
+                                                        killTwoNumberSumTailObj.removedKillTwoNumberSumTail(rest_resultBraveNumberContains23, needKillTwoNumberSumTail, function (err, resultKillTwoNumberSumTail) {
+                                                            if (business.killNumberRegulation.killTwoNumberSumTail) {
+
+
+
+
+                                                            }
+
+                                                            var rest_resultKillTwoNumberSumTail;
+                                                            //如果上期未中则产生本期号码进行投注
+                                                            if (!bonus.isWin(last_resultKillTwoNumberSumTail, lastThreeOpenCode)) {
+                                                                rest_resultKillTwoNumberSumTail = resultKillTwoNumberSumTail;
+                                                            } else {
+                                                                rest_resultKillTwoNumberSumTail = rest_resultBraveNumberContains23;
+                                                            }
+
+
+                                                            var killStrideNumberObj = new killStrideNumber();
+                                                            var needKillStrideNumber = killStrideNumberObj.getKillStrideNumberArray(lotteryData, index);
+                                                            var last_needKillStrideNumber = killStrideNumberObj.getKillStrideNumberArray(lotteryData, index + 1);
+                                                            var removedKillStrideNumber = killStrideNumberObj.getKillStrideNumberString(lotteryData, index);
+                                                            if (!business.killNumberRegulation.killStrideNumber) {
+                                                                needKillStrideNumber = null;
+                                                                last_needKillStrideNumber = null;
+                                                            } else {
+
+                                                            }
+
+                                                            killStrideNumberObj.removedKillStrideNumber(rest_resultKillTwoNumberSumTail, last_needKillStrideNumber, function (err, last_resultKillStrideNumber) {
+                                                                killStrideNumberObj.removedKillStrideNumber(rest_resultKillTwoNumberSumTail, needKillStrideNumber, function (err, resultKillStrideNumber) {
+                                                                    if (business.killNumberRegulation.killStrideNumber) {
+
+
+
+
+                                                                    }
+
+                                                                    var rest_resultKillStrideNumber;
+                                                                    //如果上期未中则产生本期号码进行投注
+                                                                    if (!bonus.isWin(last_resultKillStrideNumber, lastThreeOpenCode)) {
+                                                                        rest_resultKillStrideNumber = resultKillStrideNumber;
+                                                                    } else {
+                                                                        rest_resultKillStrideNumber = rest_resultKillTwoNumberSumTail;
+                                                                    }
+
+
+                                                                    var killSumNumberObj = new killSumNumber();
+                                                                    var needKillSumNumber = killSumNumberObj.getKillSumNumberArray(lotteryData, index);
+                                                                    var last_needKillSumNumber = killSumNumberObj.getKillSumNumberArray(lotteryData, index + 1);
+                                                                    var removedKillSumNumber = killSumNumberObj.getKillSumNumberString(lotteryData, index);
+                                                                    if (!business.killNumberRegulation.killSumNumber) {
+                                                                        needKillSumNumber = null;
+                                                                        last_needKillSumNumber = null;
+                                                                    } else {
+
+                                                                    }
+
+                                                                    killSumNumberObj.removedKillSumNumber(rest_resultKillStrideNumber, last_needKillSumNumber, function (err, last_resultKillSumNumber) {
+                                                                        killSumNumberObj.removedKillSumNumber(rest_resultKillStrideNumber, needKillSumNumber, function (err, resultKillSumNumber) {
+                                                                            if (business.killNumberRegulation.killSumNumber) {
+
+
+
+
+                                                                            }
+
+                                                                            var rest_resultKillSumNumber;
+                                                                            //如果上期未中则产生本期号码进行投注
+                                                                            if (!bonus.isWin(last_resultKillSumNumber, lastThreeOpenCode)) {
+                                                                                rest_resultKillSumNumber = resultKillSumNumber;
+                                                                            } else {
+                                                                                rest_resultKillSumNumber = rest_resultKillStrideNumber;
+                                                                            }
+
+                                                                            var houTwoBraveNumbersObj = new houTwoBraveNumbers();
+                                                                            var needHouTwoBraveNumbers = houTwoBraveNumbersObj.getHouTwoBraveNumbersArray(lotteryData, index);
+                                                                            var last_needHouTwoBraveNumbers = houTwoBraveNumbersObj.getHouTwoBraveNumbersArray(lotteryData, index + 1);
+                                                                            var removedHouTwoBraveNumbers = houTwoBraveNumbersObj.getHouTwoBraveNumbersString(lotteryData, index);
+                                                                            if (!business.killNumberRegulation.houTwoBraveNumbers) {
+                                                                                needHouTwoBraveNumbers = null;
+                                                                                last_needHouTwoBraveNumbers = null;
+                                                                            } else {
+
+                                                                            }
+
+                                                                            houTwoBraveNumbersObj.removedHouTwoBraveNumbers(rest_resultKillSumNumber, last_needHouTwoBraveNumbers, function (err, last_resultHouTwoBraveNumbers) {
+                                                                                houTwoBraveNumbersObj.removedHouTwoBraveNumbers(rest_resultKillSumNumber, needHouTwoBraveNumbers, function (err, resultHouTwoBraveNumbers) {
+                                                                                    if (business.killNumberRegulation.houTwoBraveNumbers) {
+
+
+
+
+                                                                                    }
+
+                                                                                    var rest_resultHouTwoBraveNumbers;
+                                                                                    //如果上期未中则产生本期号码进行投注
+                                                                                    if (!bonus.isWin(last_resultHouTwoBraveNumbers, lastThreeOpenCode)) {
+                                                                                        rest_resultHouTwoBraveNumbers = resultHouTwoBraveNumbers;
+                                                                                    } else {
+                                                                                        rest_resultHouTwoBraveNumbers = rest_resultKillSumNumber;
+                                                                                    }
+
+                                                                                    var killLastNumberObj = new killNumber();
+                                                                                    var removedKillLastNumber = killLastNumberObj.getLastPositionNumber(lotteryData, index);
+                                                                                    var last_removedKillLastNumber = killLastNumberObj.getLastPositionNumber(lotteryData, index + 1);
+                                                                                    var needKillLastNumber = killLastNumberObj.getKillNumberArray(removedKillLastNumber, '个');
+                                                                                    var last_needKillLastNumber = killLastNumberObj.getKillNumberArray(last_removedKillLastNumber, '个');
+                                                                                    if (!business.killNumberRegulation.killLastPositionNumbers) {
+                                                                                        needKillLastNumber = null;
+                                                                                        last_needKillLastNumber = null;
+                                                                                    } else {
+
+                                                                                    }
+
+                                                                                    killLastNumberObj.removedKillNumbers(rest_resultHouTwoBraveNumbers, last_needKillLastNumber, function (err, last_resultKillLastNumber) {
+                                                                                        killLastNumberObj.removedKillNumbers(rest_resultHouTwoBraveNumbers, needKillLastNumber, function (err, resultKillLastNumber) {
+                                                                                            if (business.killNumberRegulation.killLastPositionNumbers) {
+
+
+
+
+                                                                                            }
+
+                                                                                            var rest_resultKillLastNumber;
+                                                                                            //如果上期未中则产生本期号码进行投注
+                                                                                            if (!bonus.isWin(last_resultKillLastNumber, lastThreeOpenCode)) {
+                                                                                                rest_resultKillLastNumber = resultKillLastNumber;
+                                                                                            } else {
+                                                                                                rest_resultKillLastNumber = rest_resultHouTwoBraveNumbers;
+                                                                                            }
+
+                                                                                            var killThirdNumberObj = new killNumber();
+                                                                                            var removedKillThirdNumber = killThirdNumberObj.getThirdPositionNumber(lotteryData, index);
+                                                                                            var last_removedKillThirdNumber = killThirdNumberObj.getThirdPositionNumber(lotteryData, index + 1);
+                                                                                            var needKillThirdNumber = killThirdNumberObj.getKillNumberArray(removedKillThirdNumber, '百');
+                                                                                            var last_needKillThirdNumber = killThirdNumberObj.getKillNumberArray(last_removedKillThirdNumber, '百');
+                                                                                            if (!business.killNumberRegulation.killFirstPositionNumbers) {
+                                                                                                needKillThirdNumber = null;
+                                                                                                last_needKillThirdNumber = null;
+                                                                                            } else {
+
+                                                                                            }
+
+                                                                                            killThirdNumberObj.removedKillNumbers(rest_resultKillLastNumber, last_needKillThirdNumber, function (err, last_resultKillThirdNumber) {
+                                                                                                killThirdNumberObj.removedKillNumbers(rest_resultKillLastNumber, needKillThirdNumber, function (err, resultKillThirdNumber) {
+                                                                                                    if (business.killNumberRegulation.killFirstPositionNumbers) {
+
+
+
+
+                                                                                                    }
+
+                                                                                                    var rest_resultKillThirdNumber;
+                                                                                                    //如果上期未中则产生本期号码进行投注
+                                                                                                    if (!bonus.isWin(last_resultKillThirdNumber, lastThreeOpenCode)) {
+                                                                                                        rest_resultKillThirdNumber = resultKillThirdNumber;
+                                                                                                    } else {
+                                                                                                        rest_resultKillThirdNumber = rest_resultKillLastNumber;
+                                                                                                    }
+
+                                                                                                    var number908Obj = new number908();
+                                                                                                    var needNumber908 = number908Obj.getNumber908Array();
+                                                                                                    var last_needNumber908 = number908Obj.getNumber908Array();
+                                                                                                    if (!business.killNumberRegulation.number908) {
+                                                                                                        needNumber908 = null;
+                                                                                                        last_needNumber908 = null;
+                                                                                                    } else {
+
+                                                                                                    }
+
+                                                                                                    number908Obj.removedNotIn908(rest_resultKillThirdNumber, last_needNumber908, function (err, last_resultNumber908) {
+                                                                                                        number908Obj.removedNotIn908(rest_resultKillThirdNumber, needNumber908, function (err, resultNumber908) {
+                                                                                                            if (business.killNumberRegulation.number908) {
+
+
+                                                                                                            }
+
+                                                                                                            var rest_resultNumber908;
+                                                                                                            //如果上期未中则产生本期号码进行投注
+                                                                                                            if (!bonus.isWin(last_resultNumber908, lastThreeOpenCode)) {
+                                                                                                                rest_resultNumber908 = resultNumber908;
+                                                                                                            } else {
+                                                                                                                rest_resultNumber908 = rest_resultKillThirdNumber;
+                                                                                                            }
+
+                                                                                                            var killSumValueObj = new killSumValue();
+                                                                                                            var KillSumValueNumber = killSumValueObj.getKillSumValueNumber(lotteryData, index);
+                                                                                                            var needKillSumValue = killSumValueObj.getKillSumValueArray(lotteryData, null, 0);
+                                                                                                            var last_needKillSumValue = killSumValueObj.getKillSumValueArray(lotteryData, null, 1);
+                                                                                                            if (!business.killNumberRegulation.sum_value) {
+                                                                                                                needKillSumValue = null;
+                                                                                                                last_needKillSumValue = null;
+                                                                                                            } else {
+
+                                                                                                            }
+
+                                                                                                            killSumValueObj.removedKillSumValue(rest_resultNumber908, last_needKillSumValue, function (err, last_resultKillSumValue) {
+                                                                                                                killSumValueObj.removedKillSumValue(rest_resultNumber908, needKillSumValue, function (err, resultKillSumValue) {
+                                                                                                                    if (business.killNumberRegulation.sum_value) {
+
+
+
+
+                                                                                                                    }
+
+                                                                                                                    var rest_resultKillSumValue;
+                                                                                                                    //如果上期未中则产生本期号码进行投注
+                                                                                                                    if (!bonus.isWin(last_resultKillSumValue, lastThreeOpenCode)) {
+                                                                                                                        rest_resultKillSumValue = resultKillSumValue;
+                                                                                                                    } else {
+                                                                                                                        rest_resultKillSumValue = rest_resultNumber908;
+                                                                                                                    }
+
+                                                                                                                    //杀断组
+                                                                                                                    var brokenGroupObject = new brokenGroup();
+                                                                                                                    var brokenGroupString124 = brokenGroupObject.getBrokenGroupNumString(lotteryData, '1-2-4', index);
+                                                                                                                    var last_brokenGroupString124 = brokenGroupObject.getBrokenGroupNumString(lotteryData, '1-2-4', index + 1);
+                                                                                                                    if (!business.killNumberRegulation.brokenGroup124) {
+                                                                                                                        brokenGroupString124 = null;
+                                                                                                                        last_brokenGroupString124 = null;
+                                                                                                                    } else {
+
+                                                                                                                    }
+
+                                                                                                                    brokenGroupObject.removedBrokenGroup(rest_resultKillSumValue, last_brokenGroupString124, function (err, last_brokenGroupResult124) {
+                                                                                                                        brokenGroupObject.removedBrokenGroup(rest_resultKillSumValue, brokenGroupString124, function (err, brokenGroupResult124) {
+                                                                                                                            if (business.killNumberRegulation.brokenGroup124) {
+
+
+
+                                                                                                                            }
+
+                                                                                                                            var rest_brokenGroupResult124;
+                                                                                                                            //如果上期未中则产生本期号码进行投注
+                                                                                                                            if (!bonus.isWin(last_brokenGroupResult124, lastThreeOpenCode)) {
+                                                                                                                                rest_brokenGroupResult124 = brokenGroupResult124;
+                                                                                                                            } else {
+                                                                                                                                rest_brokenGroupResult124 = rest_resultKillSumValue;
+                                                                                                                            }
+
+                                                                                                                            var brokenGroupString233 = brokenGroupObject.getBrokenGroupNumString(lotteryData, '2-3-3', index);
+                                                                                                                            var last_brokenGroupString233 = brokenGroupObject.getBrokenGroupNumString(lotteryData, '2-3-3', index + 1);
+                                                                                                                            if (!business.killNumberRegulation.brokenGroup233) {
+                                                                                                                                brokenGroupString233 = null;
+                                                                                                                                last_brokenGroupString233 = null;
+                                                                                                                            } else {
+
+                                                                                                                            }
+
+                                                                                                                            brokenGroupObject.removedBrokenGroup(rest_brokenGroupResult124, last_brokenGroupString233, function (err, last_brokenGroupResult233) {
+                                                                                                                                brokenGroupObject.removedBrokenGroup(rest_brokenGroupResult124, brokenGroupString233, function (err, brokenGroupResult233) {
+                                                                                                                                    if (business.killNumberRegulation.brokenGroup233) {
+
+
+
+                                                                                                                                    }
+
+                                                                                                                                    var rest_brokenGroupResult233;
+                                                                                                                                    //如果上期未中则产生本期号码进行投注
+                                                                                                                                    if (!bonus.isWin(last_brokenGroupResult233, lastThreeOpenCode)) {
+                                                                                                                                        rest_brokenGroupResult233 = brokenGroupResult233;
+                                                                                                                                    } else {
+                                                                                                                                        rest_brokenGroupResult233 = rest_brokenGroupResult124;
+                                                                                                                                    }
+
+                                                                                                                                    var brokenGroupString223 = brokenGroupObject.getBrokenGroupNumString(lotteryData, '2-2-3', index);
+                                                                                                                                    var last_brokenGroupString223 = brokenGroupObject.getBrokenGroupNumString(lotteryData, '2-2-3', index + 1);
+                                                                                                                                    if (!business.killNumberRegulation.brokenGroup223) {
+                                                                                                                                        brokenGroupString223 = null;
+                                                                                                                                        last_brokenGroupString223 = null;
+                                                                                                                                    } else {
+
+                                                                                                                                    }
+
+                                                                                                                                    brokenGroupObject.removedBrokenGroup(rest_brokenGroupResult233, last_brokenGroupString223, function (err, last_brokenGroupResult223) {
+                                                                                                                                        brokenGroupObject.removedBrokenGroup(rest_brokenGroupResult233, brokenGroupString223, function (err, brokenGroupResult223) {
+                                                                                                                                            if (business.killNumberRegulation.brokenGroup223) {
+
+
+
+                                                                                                                                            }
+
+                                                                                                                                            var rest_brokenGroupResult223;
+                                                                                                                                            //如果上期未中则产生本期号码进行投注
+                                                                                                                                            if (!bonus.isWin(last_brokenGroupResult223, lastThreeOpenCode)) {
+                                                                                                                                                rest_brokenGroupResult223 = brokenGroupResult223;
+                                                                                                                                            } else {
+                                                                                                                                                rest_brokenGroupResult223 = rest_brokenGroupResult233;
+                                                                                                                                            }
+
+                                                                                                                                            //最终的投注号码
+                                                                                                                                            callback(null, rest_brokenGroupResult223);
+                                                                                                                                        });
+                                                                                                                                    });
+                                                                                                                                });
+                                                                                                                            });
+                                                                                                                        });
+                                                                                                                    });
+                                                                                                                });
+                                                                                                            });
+                                                                                                        });
+                                                                                                    });
+                                                                                                });
+                                                                                            });
+                                                                                        });
+                                                                                    });
+                                                                                });
+                                                                            });
+                                                                        });
+                                                                    });
+                                                                });
+                                                            });
+                                                        });
+                                                    });
+                                                });
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    }

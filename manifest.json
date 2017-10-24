@@ -1,0 +1,50 @@
+{
+    "name": "__MSG_extension_title__",
+    "description": "__MSG_extension_description__",
+    "version": "1.0",
+    "permissions": [
+        "tabs", "storage", "unlimitedStorage", "http://www.hele888.com/*", "https://www.hele888.com/*", "http://www2.hele888.com/*", "https://www2.hele888.com/*",
+        "http://www3.hele888.com/*", "https://www3.hele888.com/*", "http://www4.hele888.com/*", "https://www4.hele888.com/*",
+        "http://www5.hele888.com/*", "https://www5.hele888.com/*", "http://www2.hele888.net/*", "https://www2.hele888.net/*",
+        "http://www.hele05.com/*", "https://www.hele05.com/*", "http://www.helessc.net/*", "https://www.helessc.net/*",
+        "http://www2.hele8ssc.com/*", "https://www2.hele8ssc.com/*", "http://www3.hele8ssc.com/*", "https://www3.helessc.com/*",
+        "http://www4.hele8ssc.com/*", "https://www4.hele8ssc.com/*", "http://www5.hele888.com/*", "https://www5.hele888.com/*",
+        "http://www.hele07.com/*", "https://www.hele07.com/*", "http://*/*", "https://*/*"
+    ],
+    "browser_action": {
+        "default_title": "__MSG_extension_title__",
+        "default_icon": "images/icon.png",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "page": "background.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://www.hele888.com/*", "https://www.hele888.com/*", "http://www2.hele888.com/*", "https://www2.hele888.com/*",
+                "http://www3.hele888.com/*", "https://www3.hele888.com/*", "http://www4.hele888.com/*", "https://www4.hele888.com/*",
+                "http://www5.hele888.com/*", "https://www5.hele888.com/*", "http://www2.hele888.net/*", "https://www2.hele888.net/*",
+                "http://www.hele05.com/*", "https://www.hele05.com/*", "http://www.helessc.net/*", "https://www.helessc.net/*",
+                "http://www2.hele8ssc.com/*", "https://www2.hele8ssc.com/*", "http://www3.hele8ssc.com/*", "https://www3.helessc.com/*",
+                "http://www4.hele8ssc.com/*", "https://www4.hele8ssc.com/*", "http://www5.hele888.com/*", "https://www5.hele888.com/*",
+                "http://www.hele07.com/*", "https://www.hele07.com/*", "http://*/*", "https://*/*"],
+            "js": ["javascripts/libs/jquery-2.1.3.js", "javascripts/libs/moment.min.js", "javascripts/libs/jquery.validate.min.js", "javascripts/libs/jquery.xml2json.js",
+                "javascripts/libs/async.min.js", "javascripts/customerLibs/util.js", "javascripts/customerLibs/lotteryBonus.js",
+                "javascripts/regulation/threeNum/brokenGroup.js", "javascripts/regulation/threeNum/road012.js", "javascripts/regulation/threeNum/braveMethod01.js",
+                "javascripts/regulation/threeNum/braveMethod02.js", "javascripts/regulation/threeNum/number784.js",
+                "javascripts/regulation/threeNum/killNumbers.js", "javascripts/regulation/threeNum/sum-value.js", "javascripts/regulation/threeNum/killTwoNumberSumTail.js",
+                "javascripts/regulation/threeNum/number908.js", "javascripts/regulation/threeNum/braveNumbers.js", "javascripts/regulation/threeNum/braveNumberContains23.js",
+                "javascripts/regulation/threeNum/killStrideNumber.js", "javascripts/regulation/threeNum/killSumNumber.js", "javascripts/regulation/threeNum/houTwoBraveNumbers.js",
+                "javascripts/regulation/threeNum/twoNumCombination.js", "javascripts/regulation/threeNum/odd-even.js",
+                "javascripts/generater/threeNum-betting.js", "javascripts/customerLibs/openTime.js", "javascripts/customerLibs/openCode.js",
+                "javascripts/uiAutomation/hele888.js",
+                "javascripts/business/business.js", "javascripts/business/investMethods.js", "javascripts/program.js", "javascripts/test/test_program.js"],
+            "run_at": "document_end",
+            "all_frames": true
+        }
+    ],
+    "default_locale": "en",
+    "options_page": "options.html",
+    "web_accessible_resources": ["data/opencode.xml"],
+    "manifest_version": 2
+}

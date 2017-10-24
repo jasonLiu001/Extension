@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Options</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/options.css">
+
+</head>
+<body class="options_page">
+<div id="wrapper">
+<div id="header"><h1>Automation Options</h1></div>
+<form id="application_options">
+<div id="options">
+    <p id="option_message" class="notify"></p>
+
+    <fieldset id="format">
+        <legend>Basic Setting</legend>
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <label id="lbl_start_time" for="start_time">Start Time</label>
+                </td>
+                <td>
+                    <input id="start_time" name="start_time" type="text">
+                </td>
+                <td></td>
+                <td>
+                    <label id="lbl_prize" for="prize">Prize</label>
+                </td>
+                <td>
+                    <input id="prize" name="prize" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label id="lbl_target_profit" for="target_profit">Target Profit</label>
+                </td>
+                <td>
+                    <input id="target_profit" name="target_profit" type="text">
+                </td>
+                <td></td>
+                <td>
+                    <label id="lbl_lose_money" for="lose_money">lost money</label>
+                </td>
+                <td>
+                    <input id="lose_money" name="lose_money" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label id="lbl_prize_mode" for="prize_mode">Prize Mode</label>
+                </td>
+                <td>
+                    <input id="prize_mode" name="prize_mode" type="text">
+                </td>
+                <td>
+                </td>
+                <td>
+                    <label id="lbl_double_counts" for="double_counts">Double Counts</label>
+                </td>
+                <td>
+                    <input id="double_counts" name="double_counts" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <div style="width: 100; height: 20px; border: 1px solid" id="user_information"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label id="lbl_maxProfitTimes" for="maxProfitTimes">maxProfit Times</label>
+                </td>
+                <td>
+                    <input id="maxProfitTimes" name="maxProfitTimes" type="text">
+                </td>
+                <td></td>
+                <td colspan="2">
+                    <label id="lbl_maxProfitTimes_info" style="color: red">maxProfitTimes_info</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label id="lbl_maxLoseTimes" for="maxLoseTimes">max Lose Times</label>
+                </td>
+                <td>
+                    <input id="maxLoseTimes" name="maxLoseTimes" type="text">
+                </td>
+                <td>
+                </td>
+                <td>
+                    <label id="lbl_sequenceCounts" for="sequenceCounts">sequence Counts</label>
+                </td>
+                <td>
+                    <input id="sequenceCounts" name="sequenceCounts" type="text">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</div>
+<div id="regulation">
+    <fieldset id="regulation_format">
+        <legend>Regulation</legend>
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <input id="twoNumCombination" name="twoNumCombination" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_twoNumCombination" for="twoNumCombination">twoNumCombination</label>
+                </td>
+                <td>
+                    <input id="sum_value" name="sum_value" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_sum_value" for="sum_value">sum-value</label>
+                </td>
+                <td>
+                    <input id="road012" name="road012" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_road012" for="road012">road012</label>
+                </td>
+                <td>
+                    <input id="odd_even" name="odd_even" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_odd_even" for="odd_even">odd_even</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="number908" name="number908" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_number908" for="number908">number908</label>
+                </td>
+                <td>
+                    <input id="killTwoNumberSumTail" name="killTwoNumberSumTail" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_killTwoNumberSumTail" for="killTwoNumberSumTail">killTwoNumberSumTail</label>
+                </td>
+                <td>
+                    <input id="killSumNumber" name="killSumNumber" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_killSumNumber" for="killSumNumber">killSumNumber</label>
+                </td>
+                <td>
+                    <input id="killStrideNumber" name="killStrideNumber" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_killStrideNumber" for="killStrideNumber">killStrideNumber</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="killLastPositionNumbers" name="killLastPositionNumbers" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_killLastPositionNumbers"
+                           for="killLastPositionNumbers">killLastPositionNumbers</label>
+                </td>
+                <td>
+                    <input id="killFirstPositionNumbers" name="killFirstPositionNumbers" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_killFirstPositionNumbers"
+                           for="killFirstPositionNumbers">killFirstPositionNumbers</label>
+                </td>
+                <td>
+                    <input id="houTwoBraveNumbers" name="houTwoBraveNumbers" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_houTwoBraveNumbers" for="houTwoBraveNumbers">houTwoBraveNumbers</label>
+                </td>
+                <td>
+                    <input id="brokenGroup124" name="brokenGroup124" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_brokenGroup124" for="brokenGroup124">brokenGroup124</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="brokenGroup233" name="brokenGroup233" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_brokenGroup233" for="brokenGroup233">brokenGroup233</label>
+                </td>
+                <td>
+                    <input id="brokenGroup223" name="brokenGroup223" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_brokenGroup223" for="brokenGroup223">brokenGroup223</label>
+                </td>
+                <td>
+                    <input id="braveNumbers" name="braveNumbers" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_braveNumbers" for="braveNumbers">braveNumbers</label>
+                </td>
+                <td>
+                    <input id="braveNumberContains23" name="braveNumberContains23" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_braveNumberContains23" for="braveNumberContains23">braveNumberContains23</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="killMidPositionNumbers" name="killMidPositionNumbers" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_killMidPositionNumbers"
+                           for="killMidPositionNumbers">killMidPositionNumbers</label>
+                </td>
+                <td>
+                    <input id="braveMethod01" name="braveMethod01" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_braveMethod01"
+                           for="braveMethod01">braveMethod01</label>
+                </td>
+                <td>
+                    <input id="braveMethod02" name="braveMethod02" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_braveMethod02"
+                           for="braveMethod02">braveMethod02</label>
+                </td>
+                <td>
+                    <input id="number784" name="number784" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_number784"
+                           for="number784">number784</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="isOpposite" name="isOpposite" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_isOpposite" for="isOpposite">isOpposite</label>
+                </td>
+                <td>
+                    <input id="catchUp" name="catchUp" type="checkbox">
+                </td>
+                <td>
+                    <label id="lbl_catchUp" for="catchUp">catchUp</label>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</div>
+
+<div id="filterCounts">
+    <fieldset id="filterCounts_format">
+        <legend>filterCounts</legend>
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="radio" value="0" name="filter" id="filter_00">
+                </td>
+                <td>
+                    <label id="lbl_filter_00" for="filter_00">0</label>
+                </td>
+                <td>
+                    <input type="radio" value="1" name="filter" id="filter_01">
+                </td>
+                <td>
+                    <label id="lbl_filter_01" for="filter_01">1</label>
+                </td>
+                <td>
+                    <input type="radio" value="2" name="filter" id="filter_02">
+                </td>
+                <td>
+                    <label id="lbl_filter_02" for="filter_02">2</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+
+</div>
+
+<div id="oneTime_filter">
+    <fieldset id="oneTime_filter_format">
+        <legend>OneTime Filter Regulation</legend>
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="radio" value="1" name="oneTimeFilter" id="oneTime_filter_01">
+                </td>
+                <td>
+                    <label id="lbl_oneTime_filter_01" for="oneTime_filter_01">oneTime_filter_01</label>
+                </td>
+                <td>
+                    <input type="radio" value="2" name="oneTimeFilter" id="oneTime_filter_02">
+                </td>
+                <td>
+                    <label id="lbl_oneTime_filter_02" for="oneTime_filter_02">oneTime_filter_02</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" value="3" name="oneTimeFilter" id="oneTime_filter_03">
+                </td>
+                <td>
+                    <label id="lbl_oneTime_filter_03" for="oneTime_filter_03">oneTime_filter_03</label>
+                </td>
+                <td>
+                    <input type="radio" value="4" name="oneTimeFilter" id="oneTime_filter_04">
+                </td>
+                <td>
+                    <label id="lbl_oneTime_filter_04" for="oneTime_filter_04">oneTime_filter_04</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+
+</div>
+
+<div id="secondTime_filter">
+    <fieldset id="secondTime_filter_format">
+        <legend>Second Time Filter Regulation</legend>
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="radio" value="1" name="secondTimeFilter" id="secondTime_filter_01">
+                </td>
+                <td>
+                    <label id="lbl_secondTime_filter_01" for="secondTime_filter_01">secondTime_filter_01</label>
+                </td>
+                <td>
+                    <input type="radio" value="2" name="secondTimeFilter" id="secondTime_filter_02">
+                </td>
+                <td>
+                    <label id="lbl_secondTime_filter_02" for="secondTime_filter_02">secondTime_filter_02</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" value="3" name="secondTimeFilter" id="secondTime_filter_03">
+                </td>
+                <td>
+                    <label id="lbl_secondTime_filter_03" for="secondTime_filter_03">secondTime_filter_03</label>
+                </td>
+                <td>
+                    <input type="radio" value="4" name="secondTimeFilter" id="secondTime_filter_04">
+                </td>
+                <td>
+                    <label id="lbl_secondTime_filter_04" for="secondTime_filter_04">secondTime_filter_04</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+
+
+</div>
+
+</form>
+
+<div id="action_panel">
+    <input type="button" id="reset" value="Reset">
+    <input type="button" id="save" value="Save">
+    <input type="button" id="close" value="Close">
+</div>
+</div>
+<script src="javascripts/libs/jquery-2.1.3.js"></script>
+<script src="javascripts/libs/jquery.validate.min.js"></script>
+<script src="javascripts/options.js"></script>
+</body>
+</html>
